@@ -17,20 +17,42 @@ package com.example.android.sunshine;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    // TODO (1) Create a field to store the weather display TextView
+    // COMPLETED (1) Create a field to store the weather display TextView
+    private TextView mWeatherTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
 
-        // TODO (2) Use findViewById to get a reference to the weather display TextView
+        // COMPLETED (2) Use findViewById to get a reference to the weather display TextView
+        mWeatherTextView = (TextView) findViewById(R.id.tv_weather_data);
 
-        // TODO (3) Create an array of Strings that contain fake weather data
+        // CIMPLETED (3) Create an array of Strings that contain fake weather data
+        String[] mDummyWeatherData = {
+                "Placeholder Weather 001"
+                ,"Placeholder Weather 002"
+                ,"Placeholder Weather 003"
+                ,"Placeholder Weather 004"
+                ,"Placeholder Weather 005"
+                ,"Placeholder Weather 006"
+                ,"Placeholder Weather 007"
+                ,"Placeholder Weather 008"
+                ,"Placeholder Weather 009"
+                ,"Placeholder Weather 010"
+                ,"Placeholder Weather 011"
+                ,"Placeholder Weather 012"
+                ,"Placeholder Weather 013"
+                ,"Placeholder Weather 014"
+        };
 
-        // TODO (4) Append each String from the fake weather data array to the TextView
+        // COMPLETED (4) Append each String from the fake weather data array to the TextView
+        for (String mDummyWeather: mDummyWeatherData) {
+            mWeatherTextView.append(mDummyWeather + "\n\n\n");
+        }
     }
 }
