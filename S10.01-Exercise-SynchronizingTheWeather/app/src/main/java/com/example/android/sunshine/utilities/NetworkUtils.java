@@ -17,6 +17,7 @@ package com.example.android.sunshine.utilities;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.example.android.sunshine.data.SunshinePreferences;
@@ -171,6 +172,11 @@ public final class NetworkUtils {
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
+
+            // Override network on main activity exception temporarily
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
             InputStream in = urlConnection.getInputStream();
 
             Scanner scanner = new Scanner(in);
