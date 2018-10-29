@@ -85,9 +85,12 @@ public class SunshineSyncUtils {
                  * which the data should be synced. Please note that this end time is not
                  * guaranteed, but is more of a guideline for FirebaseJobDispatcher to go off of.
                  */
+//                .setTrigger(Trigger.executionWindow(
+//                        SYNC_INTERVAL_SECONDS,
+//                        SYNC_INTERVAL_SECONDS + SYNC_FLEXTIME_SECONDS))
                 .setTrigger(Trigger.executionWindow(
-                        SYNC_INTERVAL_SECONDS,
-                        SYNC_INTERVAL_SECONDS + SYNC_FLEXTIME_SECONDS))
+                        10,
+                        10))
                 /*
                  * If a Job with the tag with provided already exists, this new job will replace
                  * the old one.
