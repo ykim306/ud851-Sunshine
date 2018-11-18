@@ -120,19 +120,29 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
          /* Use the weatherId to obtain the proper description */
         int weatherId = mCursor.getInt(MainActivity.INDEX_WEATHER_CONDITION_ID);
         String description = SunshineWeatherUtils.getStringForWeatherCondition(mContext, weatherId);
+        String descriptionA11y = mContext.getString(R.string.a11y_forecast, description);
+
          /* Read high temperature from the cursor (in degrees celsius) */
         double highInCelsius = mCursor.getDouble(MainActivity.INDEX_WEATHER_MAX_TEMP);
+        String highInCelsiusA11y = mContext.getString(R.string.a11y_high_temp);
+
          /* Read low temperature from the cursor (in degrees celsius) */
         double lowInCelsius = mCursor.getDouble(MainActivity.INDEX_WEATHER_MIN_TEMP);
+        String lowInCelsiusA11y = mContext.getString(R.string.a11y_low_temp);
 
         forecastAdapterViewHolder.weatherDate.setText(dateString);
         forecastAdapterViewHolder.weatherDesc.setText(description);
+        forecastAdapterViewHolder.weatherDesc.setContentDescription(descriptionA11y);
+
         forecastAdapterViewHolder.weatherHigh.setText(
                 SunshineWeatherUtils.formatTemperature(mContext, highInCelsius)
         );
+        forecastAdapterViewHolder.weatherHigh.setContentDescription(highInCelsiusA11y);
+
         forecastAdapterViewHolder.weatherLow.setText(
                 SunshineWeatherUtils.formatTemperature(mContext, lowInCelsius)
         );
+        forecastAdapterViewHolder.weatherLow.setContentDescription(lowInCelsiusA11y);
 
         forecastAdapterViewHolder.weatherIcon.setImageResource(
                 SunshineWeatherUtils.getSmallArtResourceIdForWeatherCondition(weatherId)
